@@ -1,33 +1,45 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useReducer, Dispatch } from 'react';
 import { Redirect } from 'react-router-dom';
-import { isAuthenticated } from './AuthService';
+import { UserInformation } from '../types/User.type';
 
-import Login from '../components/Login';
+type UserContext = {
+    informationState: UserInformation,
+    informationDispatch: Dispatch<{ type: 'Login' | 'Logout' }>
+}
 
-const UserContext = createContext();
+type InformationReducer = (UserInformation,)
 
-export const UserProvider = ({ children }): JSX.Element => {
-    const [currentUser, setCurrentUser] = useState(undefined);
+// const informationDispatch
+const UserContext = createContext<UserContext>(null);
 
-    useEffect(() => {
-        const checkLoggedIn = async () => {
-            let cuser = isAuthenticated();
-            if (cuser === null) {
-                localStorage.setItem('user', '');
-                cuser = '';
-            }
 
-            setCurrentUser(cuser);
-        };
+const informationReducer = (informationState, action : ActionMap<ProductPayload>[keyof ActionMap<ProductPayload>];) => {
+    switch (action.type) {
+        case "Login":
+            return informationState
+        case "Logout":
+            return null
+        default:
+            return null;
+    }
+};
 
-        checkLoggedIn();
-    }, []);
 
-    console.log('usercontext', currentUser);
+
+type Props = {
+    children?: JSX.Element
+}
+
+export const UserProvider = ({ children }: Props): JSX.Element => {
+    const [informationState, informationDispatch] = useReducer(informationReducer, null);
+    const [lastName, setLastName] = useState(undefined);
+    const [address, setAddress] = useState(undefined);
+    const [postCode, setPostCode] = useState(undefined);
+    const [telPhoneNumber, setTelPhoneNumber] = useState(undefined);
 
     return (
-        <UserContext.Provider value={[currentUser, setCurrentUser]}>
-            {currentUser?.token ? children : <Login />}
+        <UserContext.Provider value={null}>
+            {children}
         </UserContext.Provider>
     );
 };
