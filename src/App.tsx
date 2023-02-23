@@ -3,36 +3,39 @@ import Login from './Login';
 import Index from './Index';
 import Register from './Register';
 import NotFound from './NotFound';
+import { UserInformationContext, UserInformationProvider } from "./provider/UserInformation";
+import { useContext } from "react";
 
 function App() {
-
-  const fakeIsAuthenticated: boolean = false // getthisfrom usercontextprovider
-  type Props = { logged: boolean }
-  const IsGuest = ({ logged }: Props) => {
+  const { state } = useContext(UserInformationContext)
+  const { isLoggedIn } = state
+  const IsGuest = ({ logged }: { logged: boolean }) => {
     return (!logged
       ? <Outlet />
       : <Navigate to='/' />)
   }
-
-  const IsMember = ({ logged }: Props) => {
+  const IsMember = ({ logged }: { logged: boolean }) => {
     return (logged
       ? <Outlet />
       : <Navigate to='/guest/login' />)
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<IsMember logged={fakeIsAuthenticated} />} >
-          <Route index element={<Index />} />
-        </Route>
-        <Route path='guest' element={<IsGuest logged={fakeIsAuthenticated} />} >
-          <Route path='login' element={<Login />} />
-          <Route path='register' index element={<Register />} />
-        </Route>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <UserInformationProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<IsMember logged={isLoggedIn} />} >
+            <Route index element={<Index />} />
+          </Route>
+          <Route path='guest' element={<IsGuest logged={isLoggedIn} />} >
+            <Route index element={<Navigate to="/guest/login" />} />
+            <Route path='login' element={<Login />} />
+            <Route path='register' index element={<Register />} />
+          </Route>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </UserInformationProvider>
   )
 }
 

@@ -3,11 +3,6 @@ import Button from "./Button";
 import Input from "./Input";
 import 'twin.macro'
 
-type Inputs = {
-    example: string,
-    exampleRequired: string,
-};
-
 interface IFormInput {
     firstName: string;
     lastName: string;
