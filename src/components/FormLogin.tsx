@@ -1,43 +1,35 @@
 import { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import 'twin.macro';
-import { UserInformationContext } from "../provider/UserInformation";
-import LoginApiFake from "../utils/fakeApi/LoginApiFake";
+import { login } from "../utils/authFunction";
 import Button from "./Button";
 import Input from "./Input";
 
 export default function FormLogin() {
     const [isLoginFailed, setIsLoginFailed] = useState(false)
-    const { state, dispatch } = useContext(UserInformationContext);
     interface FormInput {
         email: string
         password: string
     }
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormInput>();
-    // const FormWatcher = [watch("email"), watch("password")]
-
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInput>();
     const onSubmit: SubmitHandler<FormInput> = async (formData) => {
         const { email, password } = formData
-        LoginApiFake(email, password)
-            .then(({ data }) => {
-                // localStorage.setItem()
-            })
-            .then(() => {
-                console.warn(state.userInformation)
-            })
-            .catch(() => {
-                setIsLoginFailed(true)
-                console.log('login failed')
+        login(email, password)
+            .then((result) => {
+                if (result.success) {
+                    console.warn("OK")
+                    window.location.reload()
+                }
+                else {
+                    setIsLoginFailed(true)
+                }
+            }).then(() => {
+            }).catch(() => {
+                console.warn('login!! = catch')
             })
     }
-
-    // console.error(state.userInformation)
-    // useEffect(() => {
-    //     if (isLoginFailed) {
-    //         setIsLoginFailed(false)
-    //     }
-    // }, [FormWatcher])
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div tw="mt-3">
@@ -59,7 +51,10 @@ export default function FormLogin() {
             <div tw="mt-3">
                 <Button type="submit" tw="w-full" >Submit</Button>
             </div>
-            <div>
+            <div tw="mt-3">
+                <Link to="../register"><p tw="text-slate-800 text-sm text-right">Don't have an account? Sign up Here.</p></Link>
+            </div>
+            <div tw="mt-3">
                 {isLoginFailed && <p tw="text-red-500">Login Failed! Please try Again.</p>}
             </div>
         </form>

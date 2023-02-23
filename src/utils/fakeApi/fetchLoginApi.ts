@@ -13,7 +13,7 @@ type ResponseData = {
 }
 
 
-export default function LoginApiFake(email: string, password: string) {
+export default function fetchLoginApi(email: string, password: string) {
     return new Promise<ResponseData>((resolve, reject) => {
         const validemail = sessionStorage.getItem('email') ?? 'error@error.com'
         const validPassword = sessionStorage.getItem('password') ?? '12345678' // must be encrypt in real application
