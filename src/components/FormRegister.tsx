@@ -55,7 +55,7 @@ export default function FormRegister() {
                         <option value={Gender[Gender.male]}>Male</option>
                         <option value={Gender[Gender.preferNotToSay]}>Prefer not to say</option>
                     </Select>
-                    <p tw="text-sm mt-1">{errors.gender ? <span tw="text-red-500" > Please select gender</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.gender ? <span tw="text-red-500" > Please select gender</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <Input
@@ -63,7 +63,7 @@ export default function FormRegister() {
                         aria-invalid={errors.email ? "true" : "false"}
                         placeholder='Email'
                         tw='invalid:ring-red-500 placeholder:text-sm' />
-                    <p tw="text-sm mt-1">{errors.email ? <span tw="text-red-500" >Please provide a valid Email.</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.email ? <span tw="text-red-500" >Please provide a valid Email.</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <Input
@@ -73,7 +73,7 @@ export default function FormRegister() {
                         minLength={1}
                         maxLength={100}
                         tw='invalid:ring-red-500 placeholder:text-sm' />
-                    <p tw="text-sm mt-1">{errors.firstName ? <span tw="text-red-500" >Please provide a valid First Name.</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.firstName ? <span tw="text-red-500" >Please provide a valid First Name.</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <Input
@@ -83,7 +83,7 @@ export default function FormRegister() {
                         minLength={1}
                         maxLength={100}
                         tw='invalid:ring-red-500 placeholder:text-sm' />
-                    <p tw="text-sm mt-1">{errors.lastName ? <span tw="text-red-500" > Please provide a valid Last Name.</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.lastName ? <span tw="text-red-500" > Please provide a valid Last Name.</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <TextArea
@@ -96,8 +96,8 @@ export default function FormRegister() {
                         cols={maxAddressTextLength}
                         tw='resize-none invalid:ring-red-500 placeholder:text-sm' />
                     <div tw="flex justify-between">
-                        <p tw="text-sm mt-1">{errors.address ? <span tw="text-red-500" > Please provide a valid Address (Maximum 500 characters)</span> : <span tw="text-right text-slate-500"></span>}</p>
-                        <p tw="text-sm mt-1 text-right text-slate-500">{`${countAddressTextLengthLeft} characters left.`}</p>
+                        <p tw="text-xs select-none">{errors.address ? <span tw="text-red-500" > Please provide a valid Address (Maximum 500 characters)</span> : <span tw="text-white">-</span>}</p>
+                        <p tw="text-xs select-none text-right text-slate-500">{`${countAddressTextLengthLeft} characters left.`}</p>
                     </div>
                 </div>
                 <div tw="mt-3">
@@ -108,7 +108,7 @@ export default function FormRegister() {
                         minLength={5}
                         maxLength={5}
                         tw='invalid:ring-red-500 placeholder:text-sm' />
-                    <p tw="text-sm mt-1">{errors.postCode ? <span tw="text-red-500" > Please provide a valid Postal code</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.postCode ? <span tw="text-red-500" > Please provide a valid Postal code</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <Input
@@ -118,7 +118,7 @@ export default function FormRegister() {
                         minLength={1}
                         maxLength={20}
                         tw='invalid:ring-red-500 placeholder:text-sm' />
-                    <p tw="text-sm mt-1">{errors.telPhoneNumber ? <span tw="text-red-500" > Please provide a valid Telephone number.</span> : <span tw="text-slate-500"></span>}</p>
+                    <p tw="text-xs select-none">{errors.telPhoneNumber ? <span tw="text-red-500" > Please provide a valid Telephone number.</span> : <span tw="text-white">-</span>}</p>
                 </div>
                 <div tw="mt-3">
                     <label tw="select-none"><input type="checkbox" {...register("isAccepted", { required: true })} tw="w-4 h-4" placeholder="Please Accept" /> <span>Please accept conditions</span></label>

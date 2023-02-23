@@ -8,17 +8,11 @@ type ResponseData = {
 
 export default function fetchRegisterApi(formData: UserInformation) {
     return new Promise<ResponseData>((resolve, reject) => {
-        const { gender, email, firstName, lastName, address, postCode, telPhoneNumber } = formData
         try {
-            sessionStorage.setItem('gender', Gender[gender])
-            sessionStorage.setItem('firstName', firstName)
-            sessionStorage.setItem('lastName', lastName)
-            sessionStorage.setItem('address', address)
-            sessionStorage.setItem('postCode', postCode)
-            sessionStorage.setItem('telPhoneNumber', telPhoneNumber)
+            sessionStorage.setItem('assignment', JSON.stringify(formData))
             resolve({
                 success: true,
-                email: email,
+                email: formData.email,
             })
         }
         catch (error) {
