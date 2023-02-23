@@ -19,15 +19,13 @@ export default function FormLogin() {
         login(email, password)
             .then((result) => {
                 if (result.success) {
-                    console.warn("OK")
                     window.location.reload()
                 }
                 else {
                     setIsLoginFailed(true)
                 }
-            }).then(() => {
             }).catch(() => {
-                console.warn('login!! = catch')
+                console.warn('login error')
             })
     }
     return (

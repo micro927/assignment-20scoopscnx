@@ -1,22 +1,21 @@
 import fetchLoginApi from "./fakeApi/fetchLoginApi"
-
-type UserInformation = {
-    email: string
-    firstName: string
-    lastName: string
-    address: string
-    postCode: string
-    telPhoneNumber: string
-}
+import fetchRegisterApi from "./fakeApi/fetchRegisterApi"
+import { UserInformation } from "../types/main.type"
 
 type LoginInformation = {
     isLoggedIn: boolean,
     userInformation?: UserInformation
 }
 
-type Result = { success: boolean }
+type LoginResult = { success: boolean }
+
+type RegisterResult = {
+    success: boolean
+    message?: string
+}
+
 export async function login(email: string, password: string) {
-    let result: Result = { success: false }
+    let result: LoginResult = { success: false }
     let loginInformation: LoginInformation = {
         isLoggedIn: false,
     }
@@ -36,4 +35,17 @@ export async function login(email: string, password: string) {
 export function logout() {
     localStorage.removeItem('assignment')
     window.location.reload()
+}
+
+export async function userRegister(formData: UserInformation) {
+    let result: RegisterResult = { success: false }
+    await fetchRegisterApi(formData)
+        .then((response) => {
+            result.success = response.success
+            result.message = response.email
+        }).catch((response) => {
+            result.success = response.success
+            result.message = response.errorMessage
+        })
+    return result
 }
