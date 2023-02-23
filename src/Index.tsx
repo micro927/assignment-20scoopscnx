@@ -1,3 +1,4 @@
+import React from 'react'
 import 'twin.macro'
 import { logout } from './utils/authFunction'
 import Button from './components/Button'
