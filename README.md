@@ -2,16 +2,24 @@
 
 ## assign #1
 
-    run npm i && npm run dev
+    npm i && npm run dev
 
 ## assign #2
 
-    run npm run test -- "findMax.test.ts"
+    npm run test -- "findMax.test.ts"
 
 ## assign #3
 
-    run npm run test -- "quickSort.test.ts"
+    npm run test -- "quickSort.test.ts"
 
 ## assign #4
 
-    run npm run test -- "findMaxByAge.test.ts"
+    npm run test -- "findMaxByAge.test.ts"
+
+## assign #5
+
+    npm run test -- "quickSortObjectByAge.test.ts"
+
+## assign #6
+
+    npm run test -- "findMaxObjectbyUser.test.ts"

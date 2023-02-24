@@ -4,9 +4,13 @@ import 'twin.macro'
 
 function Login() {
     return (
-        <div tw='flex flex-col container mx-auto p-1 px-0 lg:px-32'>
-            <p tw='text-3xl'>Please Login</p>
-            <FormLogin />
+        <div tw='flex flex-col w-full h-screen container mt-10 mx-auto p-2 xl:px-60'>
+            <div tw='bg-white flex flex-col w-full container border rounded-3xl px-8 py-5 shadow-lg'>
+                <div>
+                <p tw='text-4xl font-bold text-sky-800 text-center'>Please Login</p>
+                <FormLogin />
+                </div>
+            </div>
         </div>
     )
 }

@@ -4,7 +4,6 @@ import Login from './Login';
 import Index from './Index';
 import Register from './Register';
 import NotFound from './NotFound';
-import Test from './test';
 
 function App() {
   const isLoggedIn = JSON.parse(localStorage.getItem('assignment') || '{}')?.isLoggedIn ?? false
@@ -29,7 +28,6 @@ function App() {
           <Route index element={<Navigate to="/guest/login" />} />
           <Route path='login' element={<Login />} />
           <Route path='register' index element={<Register />} />
-          <Route path='test' index element={<Test />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

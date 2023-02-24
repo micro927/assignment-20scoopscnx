@@ -44,7 +44,7 @@ export default function FormRegister() {
     }, [watch("isAccepted")])
 
     return (
-        <div tw="rounded-xl text-slate-700">
+        <div tw="mt-6 text-slate-700">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div tw="mt-3">
                     <Select {...register("gender", { required: true })}
@@ -120,18 +120,17 @@ export default function FormRegister() {
                         tw='invalid:ring-red-500 placeholder:text-sm' />
                     <p tw="text-xs select-none">{errors.telPhoneNumber ? <span tw="text-red-500" > Please provide a valid Telephone number.</span> : <span tw="text-white">-</span>}</p>
                 </div>
-                <div tw="mt-3">
-                    <label tw="select-none"><input type="checkbox" {...register("isAccepted", { required: true })} tw="w-4 h-4" placeholder="Please Accept" /> <span>Please accept conditions</span></label>
+                <div tw="mt-6">
+                    <label tw="select-none"><input type="checkbox" {...register("isAccepted", { required: true })} tw="w-4 h-4" placeholder="Please Accept" /> <span>Please accept terms and conditions</span></label>
                 </div>
                 <div tw="mt-3">
                     <Button type="submit" disabled={isAcceptedChecked} tw="w-full disabled:bg-slate-300" >Submit</Button>
-
                 </div>
                 <div tw="mt-3">
-                    <p tw="text-slate-800 text-sm text-right"><Link to="../Login">Go to Login page</Link></p>
+                    <p tw="text-sky-600 font-semibold text-sm text-right"><Link to="../Login">Go to Login page</Link></p>
                 </div>
                 <div tw="mt-3">
-                    {isRegisterSuccess && <p tw="text-green-500 italic">Register Success, Please check your Information in console, <span tw="font-bold">Your Initial password is 12345678</span></p>}
+                    {isRegisterSuccess ? <p tw="text-green-500 italic text-lg">Register Success, Please check your Information in console, <span tw="font-bold">Your Initial password is 12345678</span></p> : <p tw="text-lg select-none text-white">-</p>}
                 </div>
             </form>
         </div>
