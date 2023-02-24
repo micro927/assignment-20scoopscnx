@@ -1,4 +1,9 @@
-export function findMaxByAge(personArray) {
+export function sortByAge(personArray) {
+
+    const personIndexArray = personArray.map(item, index => {
+        return item.age
+    })
+
     let winner = {
         index: 0,
         age: personArray[0]?.age ?? 0

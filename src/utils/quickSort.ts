@@ -38,7 +38,7 @@ export function quickSort(inputArray: InputArray): OutputArray {
     if (stringInputArray.length === 0) {
         return [];
     }
-    if (stringInputArray.length === 1) {
+    else if (stringInputArray.length === 1) {
         return [numericStringtoNumber(stringInputArray[0])]
     }
 

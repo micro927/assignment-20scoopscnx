@@ -1,10 +1,10 @@
-type person = {
+type Person = {
     name: string
     age: number
 }
-type personArray = person[]
+type PersonArray = Person[]
 
-export function findMaxByAge(personArray: personArray): person {
+export function findMaxObjectbyAge(personArray: PersonArray): Person {
     let winner = {
         index: 0,
         age: personArray[0].age
