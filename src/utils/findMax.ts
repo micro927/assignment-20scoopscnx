@@ -1,10 +1,8 @@
-
-type InputArray = Array<string | number>
-type OutputArray = Array<string | number>
-type ArrayofString = string[]
-type PartitionOutput = [ArrayofString, string, ArrayofString]
-type NumericStringtoNumberOutput = string | number
-
-export function findMax() {
-    return Math.max()
+export function findMax(...input: number[]): number {
+    const inputarray = [...input]
+    let winner = inputarray[0]
+    inputarray.map(item => {
+        winner = item > winner ? item : winner
+    })
+    return winner
 }
