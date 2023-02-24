@@ -4,6 +4,14 @@
 
     npm i && npm run dev
 
+- after server started, enter website at localhost:8888
+- website will redirect to path **guest/login**
+- click *Sign up* for register
+- after register, website will print your information on cosole
+- login with your email and initial password **12345678**
+- if login success, website will redirect to home page and it will show your information on screen.
+- click *Log out* button for sign out
+
 ## assign #2
 
     npm run test -- "findMax.test.ts"
