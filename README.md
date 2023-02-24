@@ -14,4 +14,4 @@
 
 ## assign #4
 
-    run npm run test -- "quickSort.test.ts"
+    run npm run test -- "findMaxByAge.test.ts"
