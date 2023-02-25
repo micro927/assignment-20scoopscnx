@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import 'twin.macro';
-import { login } from "../utils/authFunction";
+import { useAuth } from "./UserProvider";
 import Button from "./Button";
 import Input from "./Input";
+
 
 export default function FormLogin() {
     interface FormInput {
@@ -16,6 +17,8 @@ export default function FormLogin() {
         'password' = 'Show',
         'text' = 'Hide'
     }
+
+    const { login } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm<FormInput>();
     const [isLoginFailed, setIsLoginFailed] = useState(false)
     const [inputPasswordType, setInputPasswordType] = useState<InputPasswordType>('password')
@@ -29,10 +32,9 @@ export default function FormLogin() {
     }
 
     const onSubmit: SubmitHandler<FormInput> = async (formData) => {
-        // setIsLoginFailed(false)
         const { email, password } = formData
         login(email, password)
-            .then((result) => {
+            .then((result: any) => {
                 if (result.success) {
                     window.location.reload()
                 }
