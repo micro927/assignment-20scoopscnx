@@ -31,3 +31,4 @@
 ## assign #6
 
     npm run test -- "findMaxObjectbyUser.test.ts"
+- assign #2 - #6 files are in `./test` folder
