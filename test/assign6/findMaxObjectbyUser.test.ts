@@ -8,7 +8,7 @@ const input = [
     { name: 'Mayer', age: 56, salary: 60000, children: 1 }
 ]
 
-describe(`Assignment #4 : Create a function for finding the highest item from the input array which objects by specified property which user can provide by themself (Max age & children is John / Max salary is Mayer)`, () => {
+describe(`Assignment #6 : Create a function for finding the highest item from the input array which objects by specified property which user can provide by themself (age = smith,salary = mayer,children = john)`, () => {
 
     test('find Max Age', () => {
         const expectAnswerforAge = input[3] // smith
