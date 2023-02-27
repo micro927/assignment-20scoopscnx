@@ -1,6 +1,6 @@
 import { quickSortAll } from "./quickSortAll";
 
-describe('Assignment #2 : Create a function for finding the highest item from the input array', () => {
+describe('Assignment #3#5 : Quick sort that can get both #3 and #5 input ', () => {
     test('My quick sort == Array.sort()', () => {
         const exampleArrayofNumber = [1, 100, 2, 5, 4, 10, 'Apple', 'Banana', 'Mango', 9999];
         expect(quickSortAll(exampleArrayofNumber)).toEqual(exampleArrayofNumber.sort())
